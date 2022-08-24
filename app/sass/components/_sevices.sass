@@ -1,0 +1,94 @@
+@use '../abstracts/_variables' as *
+@use '../abstracts/_mixins' as *
+
+
+.services
+	padding: 80px 0 150px
+	@media (max-width: 576px)
+		padding: 40px 0
+	.container
+		text-align: center
+	&-pretitle
+		margin-bottom: 10px
+		@extend %font-main600
+		font-size: 12px
+		color: #738697
+		text-transform: uppercase
+	&-title
+		margin-bottom: 15px
+		text-transform: uppercase
+	&-subtitle
+		max-width: 440px
+		margin: 0 auto 40px
+		@extend %font-main400
+		@include adaptiv-font(16, 14)
+		color: $clrElectricBlue
+		@include lh(16, 26)
+		@media (max-width: 576px)
+			margin: 0 auto 30px
+			@include lh(14, 21)
+	&-list
+		@media screen and (max-width: 1350px)
+			height: 430px
+			width: 100%
+		@media screen and (max-width: 576px)
+			height: 300px
+		&__wrap
+			display: flex
+			flex-wrap: wrap
+			gap: 15px
+			@media (max-width: $containerWidth + px)
+				flex-wrap: unset
+				gap: unset
+		&__item
+			max-width: 430px
+			width: 100%
+			padding: 55px 70px
+			background-color: $clrWhite
+			box-shadow: 1px 1px 12px rgba(71, 71, 71, 0.03)
+			@extend %transition
+			@media (min-width: 992px)
+				&:hover
+					box-shadow: 1px 1px 12px rgba(71, 71, 71, 0.06)
+					.services-list__title
+						color: #3A98B2
+			@media (max-width: $containerWidth + px)
+				max-width: unset
+				width: unset
+			@media (max-width: 576px)
+				padding: 30px 20px
+		&__icon
+			width: 90px
+			height: 90px
+			display: flex
+			align-items: center
+			justify-content: center
+			margin: 0 auto 25px
+			background-color: rgba(171, 210, 217, .3)
+			border-radius: 50%
+			@media (max-width: 576px)
+				margin: 0 auto 15px
+				width: 40px
+				height: 40px
+			img
+				width: 50px
+				height: 50px
+				@media (max-width: 576px)
+					width: 20px
+					height: 20px
+		&__title
+			margin-bottom: 15px
+			@extend %font-main600
+			@include adaptiv-font(18, 16)
+			letter-spacing: -0.01em
+			@extend %transition
+			color: $clrYankeesBlue
+		&__text
+			@include adaptiv-font(16, 14)
+			color: $clrElectricBlue
+			@include lh(16, 26)
+			@media (max-width: 576px)
+				@include lh(14, 21)
+	.swiper-pagination
+		span.swiper-pagination-bullet-active
+			background: $clrOrange
