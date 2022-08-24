@@ -57,3 +57,17 @@ body
 	max-width: $containerWidth + px
 	margin: 0 auto
 	padding: 0 15px
+
+
+h1
+	@extend %font-main600
+	@include adaptiv-font(40, 21)
+	color: $clrWhite
+
+h2
+	@extend %font-main500
+	@include adaptiv-font(32, 20)
+
+h3
+	@extend %font-main500
+	@include adaptiv-font(24, 19)
