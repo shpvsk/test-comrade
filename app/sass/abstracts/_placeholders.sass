@@ -1,4 +1,35 @@
 @use './_variables' as *
 
-
 @include fonts($mainFont, $mainFontWeight, main)
+
+
+%relative
+	position: relative
+
+%absolute
+	position: absolute
+
+%transition
+	transition: all 0.3s ease
+
+%btn
+	max-width: 105px
+	width: 100%
+	padding: 16px 0
+	font-size: 16px
+	color: $clrWhite
+	border-radius: 5px
+	@extend %transition
+	text-align: center
+	&_blue
+		@extend %btn
+		background-color: $clrMoonstone
+		@media (min-width: 992px)
+			&:hover
+				background-color: $clrMoonstone2
+	&_orange
+		@extend %btn
+		background-color: $clrOrange
+		@media (min-width: 992px)
+			&:hover
+				background-color: $clrOrange2

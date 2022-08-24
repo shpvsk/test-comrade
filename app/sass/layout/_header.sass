@@ -1,0 +1,176 @@
+@use 'sass:math'
+@use '../abstracts/_variables' as *
+@use '../abstracts/_mixins' as *
+
+.navigation
+	background: $clrWhite
+	padding: 25px 0
+	z-index: 1
+	@extend %relative
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.02)
+	.container
+		display: flex
+		align-items: center
+		justify-content: space-between
+	&-logo
+		@extend %relative
+		z-index: 5
+		img
+			max-width: 190px
+			height: 50px
+	&-callback
+		display: flex
+		align-items: center
+		@extend %relative
+		@media (max-width: 1200px)
+			margin-left: auto
+		&::after
+			@include figure(1px, 34px, #E0E0E0 )
+			top: 50%
+			transform: translateY(-50%)
+			left: -25px
+			@media (max-width: 1200px)
+				display: none
+		&__tel
+			font-size: 16px
+			display: flex
+			align-items: center
+			flex-shrink: 0
+			color: $clrYankeesBlue
+			@extend %relative
+			z-index: 5
+			img
+				margin-right: 15px
+				@media (max-width: 1200px)
+					margin-right: 25px
+					width: 22px
+					height: 22px
+			span
+				@media (max-width: 1200px)
+					display: none
+		&__btn
+			margin-left: 25px
+			@extend %btn_blue
+			max-width: 100%
+			width: 135px
+			flex-shrink: 0
+			@media (max-width: 1200px)
+				margin-left: 0
+				margin-top: auto
+
+.nav
+	text-align: center
+	color: $clrWhite
+	&__list
+		display: flex
+		align-items: center
+		@media (max-width: 1200px)
+			padding: 50px 15px
+			position: fixed
+			top: 100px
+			height: calc(100vh - 100px)
+			width: 100%
+			overflow-y: auto
+			overflow-x: hidden
+			right: -200%
+			transition: .5s
+			z-index: 4
+			flex-direction: column
+		> li
+			@extend %relative
+			@for $i from 1 through 10
+				&:nth-of-type(#{$i})
+					transition-duration: math.div($i, 100) * 5 + 0.6 + s
+			@media (max-width: 1200px)
+				right: -200%
+				width: 100%
+			&:not(:last-child)
+				margin-right: 30px
+				@media (max-width: 1200px)
+					margin-right: 0
+			a
+				@extend %font-main400
+				@extend %relative
+				@extend %transition
+				color: $clrYankeesBlue
+				font-size: 16px
+				@media (max-width: 1200px)
+					display: block
+					width: fit-content
+					padding: 10px 0
+					font-size: 20px
+					text-align: left
+
+
+
+
+/////////////////////////////
+// бургер меню
+/////////////////////////////
+.burger-menu
+	position: relative
+	@media (max-width: 1200px)
+		order: 2
+		height: unset
+		top: unset
+	&__button
+		z-index: 7
+		width: 30px
+		height: 15px
+		display: block
+		@extend %relative
+		@media (max-width: 768px)
+			width: 30px
+			height: 20px
+		@media (min-width: 1200px)
+			display: none
+	&__lines
+		@extend %absolute
+		width: 30px
+		height: 2px
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		background-color: $clrBlack
+		border-radius: 5px
+		transition: .4s
+		&:before
+			@extend .burger-menu__lines
+			content: ''
+			top: 7px
+		&:after
+			@extend .burger-menu__lines
+			content: ''
+			top: -5px
+	&__overlay
+		visibility: hidden
+		position: fixed
+		top: 0
+		right: 0
+		width: 100vw
+		height: 100vh
+		z-index: 3
+		transition-delay: .2s
+		background-color: $clrWhite
+	&_active
+		.nav__list
+			right: 0
+			> li
+				right: 0
+		.burger-menu__overlay
+			visibility: visible
+		.burger-menu__lines
+			background-color: transparent
+			z-index: 5
+			&:before
+				left: 0
+				top: 0px
+				transform: rotate(45deg)
+				background-color: $clrBlack
+			&:after
+				left: 0
+				top: 0px
+				transform: rotate(-45deg)
+				background-color: $clrBlack
+
+

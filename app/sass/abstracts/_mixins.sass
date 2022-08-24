@@ -31,3 +31,13 @@
 	$containerMedia: $containerWidth + 390
 	@media (min-width: $containerMedia + px)
 		font-size: $pcSize + px
+
+
+// Circle, Rectaingle, Square
+@mixin figure($width, $height, $color)
+	content: ''
+	@extend %absolute
+	display: block
+	width: $width
+	height: $height
+	background-color: $color
